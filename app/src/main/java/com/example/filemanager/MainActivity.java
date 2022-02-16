@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(PERMISSIONS, REQUEST_CODE);
+            Toast.makeText(MainActivity.this, "Triggered", Toast.LENGTH_SHORT).show();
         }
     }
 
