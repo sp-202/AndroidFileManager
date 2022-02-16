@@ -6,4 +6,5 @@
     <string name="dialog_title">Permissions</string>
     <string name="continueBtn">CONTINUE</string>
     <string name="welcomeMsg">Welcome to the file explorer app</string>
+    <string name="welcome_greet2">The free and open source app</string>
 </resources>
