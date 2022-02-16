@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         String[] PERMISSIONS = new String[]{
-                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
         };
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // set ok button on alert dialog
                 builder.setPositiveButton(R.string.dialog_ok, (dialogInterface, i) -> ActivityCompat.requestPermissions(MainActivity.this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE));
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE));
 
                 // set cancel on alert dialog
                 builder.setNegativeButton(R.string.dialog_cancel, (dialogInterface, i) -> {
