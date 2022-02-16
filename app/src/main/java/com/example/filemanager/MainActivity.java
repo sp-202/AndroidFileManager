@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 // their decision.
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
-
+                builder.setCancelable(false);
                 // set ok button on alert dialog
                 builder.setPositiveButton(R.string.dialog_ok, (dialogInterface, i) -> ActivityCompat.requestPermissions(MainActivity.this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE));
