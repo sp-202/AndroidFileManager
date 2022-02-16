@@ -9,6 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
 <!--    defined colors-->
-    <color name="maniPage_back">#FFE817</color>
-    <color name="buttonColor">#B7C2BB</color>
+    <color name="maniPage_back">#0F0124</color>
+    <color name="buttonColor">#DB9E04</color>
 </resources>

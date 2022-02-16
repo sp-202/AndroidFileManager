@@ -4,6 +4,6 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_message">Please allow this permission to use this app</string>
     <string name="dialog_title">Permissions</string>
-    <string name="continueBtn">Click here to continue</string>
+    <string name="continueBtn">CONTINUE</string>
     <string name="welcomeMsg">Welcome to the file explorer app</string>
 </resources>
