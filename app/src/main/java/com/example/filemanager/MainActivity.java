@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.Settings;
 import android.widget.Toast;
 
@@ -36,23 +37,26 @@ public class MainActivity extends AppCompatActivity {
         // Works only for build version is Android 10 or less than that
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
             requestPermissions(PERMISSIONS, REQUEST_CODE);
-            Toast.makeText(MainActivity.this, "Triggered", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (!Utils.isPermissionGranted(MainActivity.this) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            new AlertDialog.Builder(this)
-                    .setTitle("All Files Permission")
-                    .setMessage("Due to Android 11 restrictions this app requires all files permission")
-                    .setPositiveButton("Allow", (dialogInterface, i) -> takePermission())
-                    .setNegativeButton("Deny", (dialogInterface, i) -> finish())
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
-        } else {
-            Toast.makeText(this, "Permission Already Granted", Toast.LENGTH_SHORT).show();
+        boolean isPermissionGranted;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            isPermissionGranted = Environment.isExternalStorageManager();
+            if (!isPermissionGranted) {
+                new AlertDialog.Builder(this)
+                        .setTitle("All Files Permission")
+                        .setMessage("Due to Android 11 restrictions this app requires all files permission")
+                        .setPositiveButton("Allow", (dialogInterface, i) -> takePermission())
+                        .setNegativeButton("Deny", (dialogInterface, i) -> finish())
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            } else {
+                Toast.makeText(this, "Permission Already Granted", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
