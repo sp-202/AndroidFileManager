@@ -26,7 +26,6 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     private static final int REQUEST_CODE = 101;
-    private boolean isAllPermissionGranted = false;
     @RequiresApi(api = Build.VERSION_CODES.S)
     @SuppressLint("SetTextI18n")
     @Override
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
         String FirstTime = preferences.getString("FirstTimeInstall", "");
 
-        if (FirstTime.equals("Yes") && isAllPermissionGranted){
+        if (FirstTime.equals("Yes")){
             Intent intent = new Intent(MainActivity.this, FileListActivity.class);
             startActivity(intent);
             finishAffinity();
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             isPermissionGranted = Environment.isExternalStorageManager();
             if (!isPermissionGranted) {
-                new AlertDialog.Builder(this, R.style.AlertDialogStyle)
+                new AlertDialog.Builder(this)
                         .setTitle("All Files Permission")
                         .setMessage("Due to Android 11 restrictions this app requires all files permission")
                         .setPositiveButton("Allow", (dialogInterface, i) -> takePermission())
@@ -81,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             } else {
                 startApp();
-                isAllPermissionGranted = true;
             }
         }
     }
@@ -114,14 +112,13 @@ public class MainActivity extends AppCompatActivity {
                 // in your app.
 //                Toast.makeText(MainActivity.this, "Read external storage permission granted", Toast.LENGTH_SHORT).show();
                 startApp();
-                isAllPermissionGranted = true;
             } else {
                 // Explain to the user that the feature is unavailable because
                 // the features requires a permission that the user has denied.
                 // At the same time, respect the user's decision. Don't link to
                 // system settings in an effort to convince the user to change
                 // their decision.
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.AlertDialogStyle);
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
                 builder.setCancelable(false);
                 // set ok button on alert dialog

@@ -6,4 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".FileListActivity">
 
+    <Button
+        android:id="@+id/grantPermissinBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:backgroundTint="#F6F2F2"
+        android:text="Grand Permission"
+        android:textColor="#FF5722"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
