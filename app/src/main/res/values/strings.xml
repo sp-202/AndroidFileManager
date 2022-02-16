@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">File Manager</string>
+    <string name="dialog_ok">Ok</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_message">Please allow this permission to use this app</string>
+    <string name="dialog_title">Permissions</string>
 </resources>
