@@ -28,42 +28,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
-        String[] PERMISSIONS = new String[]{
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        };
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(PERMISSIONS, REQUEST_CODE);
-        }
-    }
-
-    @SuppressLint("SetTextI18n")
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CODE) {// If request is cancelled, the result arrays are empty.
-            if (grantResults.length > 0 &&
-                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission is granted. Continue the action or workflow
-                Toast.makeText(MainActivity.this, "Write external storage permission granted", Toast.LENGTH_SHORT).show();
-            } else {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
-
-                // set ok button on alert dialog
-                builder.setPositiveButton(R.string.dialog_ok, (dialogInterface, i) -> ActivityCompat.requestPermissions(MainActivity.this,
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE));
-
-                // set cancel on alert dialog
-                builder.setNegativeButton(R.string.dialog_cancel, (dialogInterface, i) -> {
-                    dialogInterface.dismiss();
-                    finish();
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-
-        }
     }
 }
