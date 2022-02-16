@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.pm.PackageManager;
-import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -21,10 +20,8 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
 
     BluetoothAdapter bluetoothAdapter;
-    WifiManager wifiManager;
 
     private static final int REQUEST_CODE = 1;
-    private String[] PERMISSIONS;
 
     @RequiresApi(api = Build.VERSION_CODES.S)
     @SuppressLint("SetTextI18n")
@@ -35,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        PERMISSIONS = new String[]{
+        String[] PERMISSIONS = new String[]{
                 Manifest.permission.READ_EXTERNAL_STORAGE,
         };
 
