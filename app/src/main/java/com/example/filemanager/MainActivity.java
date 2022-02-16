@@ -3,7 +3,6 @@ package com.example.filemanager;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.bluetooth.BluetoothAdapter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,9 +18,9 @@ import com.example.filemanager.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
 
-    BluetoothAdapter bluetoothAdapter;
 
-    private static final int REQUEST_CODE = 1;
+
+    private static final int REQUEST_CODE = 101;
 
     @RequiresApi(api = Build.VERSION_CODES.S)
     @SuppressLint("SetTextI18n")
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
         String[] PERMISSIONS = new String[]{
                 Manifest.permission.READ_EXTERNAL_STORAGE,
         };
