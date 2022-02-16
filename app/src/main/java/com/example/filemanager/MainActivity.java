@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -34,11 +35,12 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // To hide the top bar in app
         Objects.requireNonNull(getSupportActionBar()).hide();
-
+        // To make the status bar color same with Main Activity
         Window window = getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.maniPage_back));
-
+        // Declaration of the permission array
         String[] PERMISSIONS = new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         };
@@ -46,6 +48,23 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
             requestPermissions(PERMISSIONS, REQUEST_CODE);
         }
+
+        // To show this activity for once when the user installs the app for the first time
+        SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+        String FirstTime = preferences.getString("FirstTimeInstall", "");
+
+        if (FirstTime.equals("Yes")){
+            Intent intent = new Intent(MainActivity.this, FileListActivity.class);
+            startActivity(intent);
+            finishAffinity();
+        } else {
+            @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("FirstTimeInstall", "Yes");
+            editor.apply();
+        }
+
+
+
     }
 
     @Override
