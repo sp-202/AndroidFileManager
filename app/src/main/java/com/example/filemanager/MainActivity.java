@@ -29,13 +29,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        if (!Utils.isPermissionGranted(MainActivity.this)) {
+        if (!Utils.isPermissionGranted(MainActivity.this) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             new AlertDialog.Builder(this)
                     .setTitle("All Files Permission")
                     .setMessage("Due to Android 11 restrictions this app requires all files permission")
