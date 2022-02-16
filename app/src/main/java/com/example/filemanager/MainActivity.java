@@ -85,40 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
-            if (grantResults.length > 0 &&
-                    grantResults[1] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(MainActivity.this, "Camera permission granted", Toast.LENGTH_SHORT).show();
-            }
 
-            if (grantResults.length > 0 &&
-                    grantResults[2] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(MainActivity.this, "Bluetooth permission granted", Toast.LENGTH_SHORT).show();
-            }
-            if (grantResults.length > 0 &&
-                    grantResults[3] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(MainActivity.this, "ACCESS_COARSE_LOCATION permission granted", Toast.LENGTH_SHORT).show();
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-                }
-                if (!wifiManager.isWifiEnabled()){
-                    Toast.makeText(getApplicationContext(), "Turning on wifi...", Toast.LENGTH_SHORT).show();
-                    wifiManager.setWifiEnabled(true);
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "Wifi is already turned on", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-            if (grantResults.length > 0 &&
-                    grantResults[4] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(MainActivity.this, "ACCESS_WIFI_STATE permission granted", Toast.LENGTH_SHORT).show();
-            }
-            if (grantResults.length > 0 &&
-                    grantResults[5] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(MainActivity.this, "CHANGE_WIFI_STATE permission granted", Toast.LENGTH_SHORT).show();
-            }
         }
-        // Other 'case' lines to check for other
-        // permissions this app might request.
     }
 }
