@@ -28,23 +28,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         String[] PERMISSIONS = new String[]{
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.CAMERA,
-                Manifest.permission.BLUETOOTH_SCAN,
-
-                Manifest.permission.BLUETOOTH,
-                Manifest.permission.BLUETOOTH_ADMIN,
-                Manifest.permission.BLUETOOTH_SCAN,
-                Manifest.permission.BLUETOOTH_CONNECT,
-                Manifest.permission.ACCESS_FINE_LOCATION
         };
-
+        // Works only for build version is Android 10 or less than that
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(PERMISSIONS, REQUEST_CODE);
             Toast.makeText(MainActivity.this, "Triggered", Toast.LENGTH_SHORT).show();
         }
+
+        // For Android 11 And higher version
+
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
