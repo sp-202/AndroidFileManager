@@ -19,6 +19,8 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.filemanager.databinding.ActivityMainBinding;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     private static final int REQUEST_CODE = 101;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         String[] PERMISSIONS = new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -53,9 +57,10 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("Allow", (dialogInterface, i) -> takePermission())
                         .setNegativeButton("Deny", (dialogInterface, i) -> finish())
                         .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setCancelable(false)
                         .show();
             } else {
-                Toast.makeText(this, "Permission Already Granted", Toast.LENGTH_SHORT).show();
+                startApp();
             }
         }
     }
@@ -86,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
                     grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission is granted. Continue the action or workflow
                 // in your app.
-                Toast.makeText(MainActivity.this, "Read external storage permission granted", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Read external storage permission granted", Toast.LENGTH_SHORT).show();
+                startApp();
             } else {
                 // Explain to the user that the feature is unavailable because
                 // the features requires a permission that the user has denied.
@@ -109,5 +115,15 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
             }
         }
+    }
+
+    public void startApp() {
+        binding.nextBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, FileListActivity.class);
+            String path = Environment.getExternalStorageDirectory().getPath();
+            intent.putExtra("path", path);
+            startActivity(intent);
+            finishAffinity();
+        });
     }
 }
