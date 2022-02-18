@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.example.filemanager.databinding.ActivityFileListBinding;
 import java.util.Objects;
 
 public class FileListActivity extends AppCompatActivity {
+    private static final String TAG = "myApp";
     ActivityFileListBinding binding;
     private static final int REQUEST_CODE = 101;
 
@@ -32,7 +34,8 @@ public class FileListActivity extends AppCompatActivity {
         binding.grantPermissinBtn.setVisibility(View.INVISIBLE);
         // To hide the top bar in app
         Objects.requireNonNull(getSupportActionBar()).hide();
-
+        String path = getIntent().getStringExtra("path");
+        Log.d(TAG, "onCreate: " + path);
     }
 
     @Override

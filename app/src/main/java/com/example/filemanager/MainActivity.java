@@ -26,6 +26,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     private static final int REQUEST_CODE = 101;
+
     @RequiresApi(api = Build.VERSION_CODES.S)
     @SuppressLint("SetTextI18n")
     @Override
@@ -52,9 +53,11 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
         String FirstTime = preferences.getString("FirstTimeInstall", "");
 
-        if (FirstTime.equals("Yes")){
+        if (FirstTime.equals("Yes")) {
             Intent intent = new Intent(MainActivity.this, FileListActivity.class);
             startActivity(intent);
+            String path = Environment.getExternalStorageDirectory().getPath();
+            intent.putExtra("path", path);
             finishAffinity();
         } else {
             @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = preferences.edit();
