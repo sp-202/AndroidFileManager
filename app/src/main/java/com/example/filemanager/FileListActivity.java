@@ -35,6 +35,7 @@ public class FileListActivity extends AppCompatActivity {
         // To hide the top bar in app
         Objects.requireNonNull(getSupportActionBar()).hide();
         String path = getIntent().getStringExtra("path");
+        Toast.makeText(this, path, Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onCreate: " + path);
     }
 

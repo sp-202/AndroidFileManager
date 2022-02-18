@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Window;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.example.filemanager.databinding.ActivityMainBinding;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "myApp";
     ActivityMainBinding binding;
     private static final int REQUEST_CODE = 101;
 
@@ -55,9 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (FirstTime.equals("Yes")) {
             Intent intent = new Intent(MainActivity.this, FileListActivity.class);
-            startActivity(intent);
             String path = Environment.getExternalStorageDirectory().getPath();
             intent.putExtra("path", path);
+            startActivity(intent);
+            Log.d(TAG, "onCreate: Triggered");
             finishAffinity();
         } else {
             @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = preferences.edit();
