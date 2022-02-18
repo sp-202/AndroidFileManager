@@ -7,4 +7,7 @@
     <string name="continueBtn">CONTINUE</string>
     <string name="welcomeMsg">Welcome to the file explorer app</string>
     <string name="welcome_greet2">The free and open source app</string>
+    <string name="grand_permission">Grand Permission</string>
+    <string name="no_files_found">No files found</string>
+    <string name="documents_sample_str">Documents</string>
 </resources>

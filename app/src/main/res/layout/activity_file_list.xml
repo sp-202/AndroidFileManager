@@ -7,12 +7,12 @@
     tools:context=".FileListActivity">
 
     <Button
-        android:id="@+id/grantPermissinBtn"
+        android:id="@+id/grantPermissionBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
         android:backgroundTint="#F6F2F2"
-        android:text="Grand Permission"
+        android:text="@string/grand_permission"
         android:textColor="#FF5722"
         android:textSize="16sp"
         android:visibility="invisible"
@@ -34,7 +34,7 @@
         android:id="@+id/noFilesAlert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No files found"
+        android:text="@string/no_files_found"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:visibility="invisible"
