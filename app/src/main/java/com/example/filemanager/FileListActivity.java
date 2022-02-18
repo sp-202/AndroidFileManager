@@ -18,7 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.filemanager.adapter_classes.FlieList_Adapter;
+import com.example.filemanager.adapter_classes.FileList_Adapter;
 import com.example.filemanager.databinding.ActivityFileListBinding;
 
 import java.io.File;
@@ -120,6 +120,6 @@ public class FileListActivity extends AppCompatActivity {
         binding.noFilesAlert.setVisibility(View.INVISIBLE);
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerView.setAdapter(new FlieList_Adapter(getApplicationContext(), filesAndFolders));
+        binding.recyclerView.setAdapter(new FileList_Adapter(getApplicationContext(), filesAndFolders));
     }
 }
